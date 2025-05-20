@@ -531,3 +531,33 @@ function themeConfig($form)
     </div>
     </div>'));
 }
+
+/**
+ * 文章字段
+ */
+if (file_exists(__DIR__ . '/fields.php')) {
+    function themeFields($layout)
+    {
+        $fieldElements = require_once 'fields.php';
+        // 循环添加字段
+        foreach ($fieldElements as $field) {
+            $element = TTDF_FormElement(
+                $field['type'],
+                $field['name'],
+                $field['value'] ?? null,
+                $field['label'] ?? '',
+                $field['description'] ?? '',
+                $field['options'] ?? []
+            );
+
+            // 设置字段属性
+            if (isset($field['attributes'])) {
+                foreach ($field['attributes'] as $attr => $value) {
+                    $element->input->setAttribute($attr, $value);
+                }
+            }
+
+            $layout->addItem($element);
+        }
+    }
+}
