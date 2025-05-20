@@ -1,5 +1,5 @@
 # Typecho-Options
-Typecho主题后台设置框架
+TTDF后台设置框架独立版
 
 支持文章字段，如果不需要直接删除`fields.php`即可
 
