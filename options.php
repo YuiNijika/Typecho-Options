@@ -27,7 +27,6 @@ function TTDF_FormElement($type, $name, $value, $label, $description, $options =
 function themeConfig($form)
 {
 ?>
-    </div>
 
     <style text="text/css">
         /* Typecho CSS 重置部分 */
