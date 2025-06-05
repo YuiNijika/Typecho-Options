@@ -81,8 +81,6 @@ function themeConfig($form)
 
         /* 主容器 */
         .TTDF-container {
-            max-width: 1200px;
-            margin: 20px auto;
             background: white;
             border-radius: 3px;
             box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
@@ -93,7 +91,7 @@ function themeConfig($form)
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 10px 15px;
             border-bottom: 1px solid #dcdcde;
         }
 
@@ -272,6 +270,7 @@ function themeConfig($form)
             }
             
             .TTDF-nav-item {
+                text-align: center;
                 white-space: nowrap;
                 border-left: none;
                 border-bottom: 3px solid transparent;
