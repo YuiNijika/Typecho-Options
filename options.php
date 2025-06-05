@@ -81,6 +81,7 @@ function themeConfig($form)
 
         /* 主容器 */
         .TTDF-container {
+            margin: 20px auto;
             background: white;
             border-radius: 3px;
             box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
