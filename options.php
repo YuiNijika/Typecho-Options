@@ -1,29 +1,10 @@
 <?php
 
 /**
- * options core
- * TTDF的后台设置框架单独版
- * @author 鼠子(Tomoriゞ)
- * @link https://github.com/ShuShuicu/Typecho-Options
+ * Options Functions
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-/**
- * 辅助函数：创建表单元素
- */
-function TTDF_FormElement($type, $name, $value, $label, $description, $options = [])
-{
-    // 确保 _t() 的参数不为 null
-    $label = $label ?? '';
-    $description = $description ?? '';
 
-    $class = '\\Typecho\\Widget\\Helper\\Form\\Element\\' . $type;
-    if ($type === 'Radio' || $type === 'Select' || $type === 'Checkbox') {
-        // Radio、Select、Checkbox 类型需要额外的 options 参数
-        return new $class($name, $options, $value, _t($label), _t($description));
-    } else {
-        return new $class($name, null, $value, _t($label), _t($description));
-    }
-}
 function themeConfig($form)
 {
 ?>
@@ -63,7 +44,8 @@ function themeConfig($form)
             }
 
             .col-tb-8 {
-                width: unset;
+                flex: unset;
+                max-width: unset;
             }
         }
 
@@ -259,7 +241,7 @@ function themeConfig($form)
             .TTDF-body {
                 flex-direction: column;
             }
-            
+
             .TTDF-nav {
                 width: 100%;
                 max-height: 200px;
@@ -269,14 +251,14 @@ function themeConfig($form)
                 overflow-x: auto;
                 overflow-y: hidden;
             }
-            
+
             .TTDF-nav-item {
                 text-align: center;
                 white-space: nowrap;
                 border-left: none;
                 border-bottom: 3px solid transparent;
             }
-            
+
             .TTDF-nav-item.active {
                 border-left: none;
                 border-bottom-color: #2271b1;
@@ -290,8 +272,13 @@ function themeConfig($form)
 
         /* 动画效果 */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
     </style>
     <script type="text/javascript">
@@ -299,7 +286,7 @@ function themeConfig($form)
             const tabButtons = document.querySelectorAll('.TTDF-nav-item');
             const tabPanels = document.querySelectorAll('.TTDF-tab-panel');
             const saveButton = document.querySelector('.TTDF-save');
-            
+
             // 初始化
             function initTabsFromHash() {
                 const hash = window.location.hash.substring(1);
@@ -314,34 +301,34 @@ function themeConfig($form)
                     }
                 }
             }
-            
+
             // 切换标签页
             function switchTab(clickedBtn) {
                 // 移除所有活动状态
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabPanels.forEach(panel => panel.classList.remove('active'));
-                
+
                 // 添加活动状态到点击的按钮
                 clickedBtn.classList.add('active');
-                
+
                 // 显示对应的面板
                 const tabId = clickedBtn.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
-                
+
                 // 更新URL哈希
                 window.location.hash = tabId;
             }
-            
+
             // 添加点击事件
             tabButtons.forEach(btn => {
                 btn.addEventListener('click', function() {
                     switchTab(this);
                 });
             });
-            
+
             // 初始化标签页
             initTabsFromHash();
-            
+
             // 监听哈希变化
             window.addEventListener('hashchange', initTabsFromHash);
         });
@@ -430,34 +417,4 @@ function themeConfig($form)
             © Framework By <a href="https://github.com/ShuShuicu/TTDF" target="_blank" style="padding: 0px 3px;">TTDF</a> v' . TTDF::Ver(false) . '
         </div>
     </div>'));
-}
-
-/**
- * 文章字段
- */
-if (file_exists(__DIR__ . '/fields.php')) {
-    function themeFields($layout)
-    {
-        $fieldElements = require_once 'fields.php';
-        // 循环添加字段
-        foreach ($fieldElements as $field) {
-            $element = TTDF_FormElement(
-                $field['type'],
-                $field['name'],
-                $field['value'] ?? null,
-                $field['label'] ?? '',
-                $field['description'] ?? '',
-                $field['options'] ?? []
-            );
-
-            // 设置字段属性
-            if (isset($field['attributes'])) {
-                foreach ($field['attributes'] as $attr => $value) {
-                    $element->input->setAttribute($attr, $value);
-                }
-            }
-
-            $layout->addItem($element);
-        }
-    }
 }
