@@ -371,7 +371,7 @@ function themeConfig($form)
     <div id="TTDF_Options">
         <div class="TTDF-container">
             <div class="TTDF-header">
-                <h1 class="TTDF-title">' . GetTheme::Name(false) . '<small> · ' . GetTheme::Ver(false) . '</small></h1>
+                <h1 class="TTDF-title">' .Helper::options()->theme . '</h1>
                 <div class="TTDF-actions">
                     <button class="TTDF-save" type="submit">保存设置</button>
                 </div>
