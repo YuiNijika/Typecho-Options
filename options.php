@@ -24,6 +24,20 @@ function TTDF_FormElement($type, $name, $value, $label, $description, $options =
         return new $class($name, null, $value, _t($label), _t($description));
     }
 }
+
+// 辅助类用于输出HTML
+class EchoHtml extends Typecho_Widget_Helper_Layout
+{
+    public function __construct($html)
+    {
+        $this->html($html);
+        $this->start();
+        $this->end();
+    }
+    public function start() {}
+    public function end() {}
+}
+
 function themeConfig($form)
 {
 ?>
@@ -313,18 +327,6 @@ function themeConfig($form)
         });
     </script>
 <?php
-    // 辅助类用于输出HTML
-    class EchoHtml extends Typecho_Widget_Helper_Layout
-    {
-        public function __construct($html)
-        {
-            $this->html($html);
-            $this->start();
-            $this->end();
-        }
-        public function start() {}
-        public function end() {}
-    }
     // 初始化HTML结构
     $form->addItem(new EchoHtml('
     <div class="TTDF-container">
