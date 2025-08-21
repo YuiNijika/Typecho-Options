@@ -4,7 +4,7 @@
  * options core
  * TTDF的后台设置框架单独版
  * @author 鼠子(Tomoriゞ)
- * @link https://github.com/ShuShuicu/Typecho-Options
+ * @link https://github.com/YuiNijika/Typecho-Options
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
@@ -396,3 +396,4 @@ function themeConfig($form)
         © Framework By <a href="https://github.com/YuiNijika/Typecho-Options" target="_blank" style="padding: 0px 3px;">TTDF Options</a>
     </div>'));
 }
+
