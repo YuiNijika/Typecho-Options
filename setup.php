@@ -8,13 +8,13 @@ return [
             [
                 // 'Html' => '自定义HTML标签',
                 'type' => 'Html',
-                'content' => '<h3>感谢使用 TTDF 进行开发</h3>'
+                'content' => '<div class="alert success">感谢使用<a href="https://github.com/YuiNijika/TTDF">TTDF</a>进行开发</div>'
             ],
             [
                 // 'Text' => '文本框',
                 'type' => 'Text',
                 'name' => 'SubTitle',
-                'value' => null,
+                'value' => '',
                 'label' => '副标题',
                 'description' => '这是一个文本框，用于设置网站副标题，如果为空则不显示。'
             ],
@@ -22,9 +22,9 @@ return [
                 // 'Textarea' => '文本域',
                 'type' => 'Textarea',
                 'name' => 'TTDF_Textarea',
-                'value' => null,
+                'value' => '',
                 'label' => '文本域',
-                'description' => '这是一个文本域~'
+                'description' => '这是一个文本域，测试默认值处理~'
             ]
         ]
     ],
@@ -35,7 +35,7 @@ return [
                 // 'Radio' => '单选框',
                 'type' => 'Radio',
                 'name' => 'TTDF_Radio',
-                'value' => 'option1',
+                'value' => '',
                 'label' => '单选框',
                 'description' => '这是一个单选框~',
                 'options' => [
@@ -48,7 +48,7 @@ return [
                 // 'Select' => '下拉框',
                 'type' => 'Select',
                 'name' => 'TTDF_Select',
-                'value' => 'option2',
+                'value' => '',
                 'label' => '下拉框',
                 'description' => '这是一个下拉框~',
                 'options' => [
@@ -80,7 +80,7 @@ return [
                 'name' => 'TTDF_RESTAPI_Switch',
                 'value' => 'false',
                 'label' => 'REST API',
-                'description' => 'TTDF框架内置的 REST API<br/>使用教程可参见 <a href="https://github.com/Typecho-Framework/Typecho-Theme-Development-Framework#rest-api" target="_blank">*这里*</a>',
+                'description' => 'TTDF框架内置的 REST API<br/>使用教程可参见 <a href="https://github.com/YuiNijika/TTDF/blob/master/README_DOC.md#rest-api" target="_blank">*这里*</a>',
                 'options' => [
                     'true' => '开启',
                     'false' => '关闭'
@@ -94,12 +94,12 @@ return [
         'html' => [
             [
                 // 'Content' => '自定义输出HTML内容',
-                'content' => '<h2>欢迎使用TTDF框架</h2>
-            <p>Typecho Theme Development Framework</p>
-            <blockquote style="border-left: 4px solid #ccc; padding-left: 20px; margin: 20px 0;">
-                <p>一个 Typecho 主题开发框架，设计之初是写给自己用的。<br>
-                <del>还算不上框架只能说让开发变得更简单些</del></p>
-            </blockquote>'
+                'content' => '
+                    <div class="alert info">信息提示</div>
+                    <div class="alert success">成功提示</div>
+                    <div class="alert warning">警告提示</div>
+                    <div class="alert error">错误提示</div>
+                '
             ],
         ]
     ],
